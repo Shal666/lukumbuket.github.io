@@ -1,0 +1,929 @@
+body {
+    background-color: #fdd1f8;
+    color: #3E3E3E;
+    font-family: 'Arial', sans-serif;
+}
+/* ========== ГЛАВНЫЕ СТИЛИ НАВИГАЦИИ ========== */
+.navbar {
+    background-color: #212020;
+    padding: 12px 5%;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navbar-brand img {
+    width: 70px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-link {
+    color: white;
+    font-size: 16px;
+    padding: 8px 12px;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Анимация подчеркивания */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FF69B4;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #FF69B4;
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Активная страница */
+.nav-link.active {
+    color: #FF69B4;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ ========== */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px 5%;
+    }
+
+    .navbar-brand img {
+        width: 40px;
+    }
+
+    /* Скрываем все пункты меню, кроме "О нас" и "Каталог" */
+    .nav-item:not(:first-child):not(:nth-child(2)) {
+        display: none;
+    }
+
+    .nav-link {
+        font-size: 15px;
+        padding: 6px 10px;
+    }
+
+    .nav-link::after {
+        bottom: 4px;
+        height: 1.5px;
+    }
+}
+
+.nav-link.active {
+    color: #FF69B4 !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 80% !important;
+    opacity: 1 !important;
+}
+
+/* Карточки товаров */
+.product-card .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+    /* Для выравнивания высоты */
+}
+
+.product-card .card:hover {
+    transform: translateY(-5px);
+}
+.product-card[data-category="букет"] .card-img-top {
+    height: 350px;
+}
+
+.product-card[data-category="бокс"] .card-img-top {
+    height: 350px;
+}
+
+.product-card[data-category="корзина"] .card-img-top {
+    height: 350px;
+}
+
+.product-card .card-img-top {
+    width: 100%;
+    height: auto; /* Автоподбор высоты */
+    max-height: 350px; /* Максимальная высота */
+    border-radius: 8px 8px 0 0;
+}
+.product-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.product-card .card-price {
+    font-weight: bold;
+    color: #f43636;
+    margin: 10px 0;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: #FF69B4;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #FF1493;
+}
+
+.btn-outline-primary {
+    color: #FF69B4;
+    border-color: #FF69B4;
+}
+
+.btn-outline-primary:hover {
+    background-color: #FF69B4;
+    border-color: #FF69B4;
+}
+
+/* Фильтры и сортировка */
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.sort-buttons {
+    margin: 20px 0;
+}
+
+/* Футер */
+footer {
+    background-color: #212020;
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-logo img {
+    height: 80px;
+}
+
+.footer-social img {
+    height: 80px;
+    width: 80px;
+    margin: 0 10px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-social {
+        margin-top: 15px;
+    }
+}
+
+/* Гарантированное отображение 2 карточек в ряд на мобильных */
+@media (max-width: 576px) {
+    .product-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 8px;
+    }
+}
+
+/* Стили для всех карточек (универсальные) */
+.product-card .card {
+    width: 100%;
+    /* Растягиваем на всю ширину колонки */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+    /* Отступ снизу */
+}
+
+/* Стили для изображений в карточках */
+.product-card .card-img-top {
+    width: 100%;
+    height: 200px;
+    /* Фиксированная высота для всех изображений */
+    object-fit: cover;
+    /* Обрезаем изображение, сохраняя пропорции */
+    border-radius: 8px 8px 0 0;
+}
+
+/* Стили для тела карточки */
+.product-card .card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Кнопка "Заказать" */
+.product-card .btn-primary {
+    margin-top: auto;
+    /* Прижимаем кнопку к низу карточки */
+}
+
+/* Стили для контейнера кнопок сортировки */
+.sort-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+/* Общий стиль для кнопок сортировки */
+.sort-asc,
+.sort-desc {
+    position: relative;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 220px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для кнопки "По возрастанию" */
+.sort-asc {
+    background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+/* Стиль для кнопки "По убыванию" */
+.sort-desc {
+    background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+/* Эффект при наведении */
+.sort-asc:hover,
+.sort-desc:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект при нажатии */
+.sort-asc:active,
+.sort-desc:active {
+    transform: translateY(1px);
+}
+
+/* Анимация "волны" при клике */
+.sort-asc:after,
+.sort-desc:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+    z-index: -1;
+}
+
+.sort-asc:active:after,
+.sort-desc:active:after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Иконки для кнопок (Font Awesome) */
+.sort-asc:before,
+.sort-desc:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.sort-asc:before {
+    content: "\f062";
+    /* Иконка стрелки вверх */
+}
+
+.sort-desc:before {
+    content: "\f063";
+    /* Иконка стрелки вниз */
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 576px) {
+    .sort-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sort-asc,
+    .sort-desc {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Основные стили */
+body {
+    font-family: 'Lora', serif;
+    background-color: #fdd1f8;
+    color: #3E3E3E;
+    overflow-x: hidden;
+}
+
+
+/* Карусель */
+.carousel {
+    margin: 30px 0;
+}
+
+.carousel-item img {
+    border-radius: 15px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.slide-text {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.slide-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #2D2A2A;
+    margin-bottom: 20px;
+}
+
+.slide-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Почему выбирают нас */
+.why-choose-us {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #2D2A2A;
+}
+
+.reasons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.reason {
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.reason:hover {
+    transform: translateY(-10px);
+}
+
+.reason img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.reason h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+
+
+/* FAQ */
+.faq-section {
+    padding: 50px 0;
+}
+
+.faq-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #2D2A2A;
+}
+
+.accordion-button {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.accordion-body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Футер */
+footer {
+    background-color: #212020;
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+}
+
+.footer-info {
+    text-align: center;
+}
+
+.footer-info p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.footer-info a {
+    color: gold;
+    text-decoration: none;
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+}
+
+.footer-social a img {
+    width: 80px;
+    height: 80px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social .whatsapp-icon{
+    width: 100px;
+    height: 100px;
+}
+
+
+.footer-social a img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 0.9rem;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 992px) {
+    .carousel-item img {
+        height: 350px;
+    }
+
+    .slide-text {
+        padding: 15px;
+    }
+
+    .slide-text h3 {
+        font-size: 1.8rem;
+    }
+
+    .reason {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 50px;
+    }
+
+    .carousel-item .row {
+        flex-direction: column;
+    }
+
+    .carousel-item img {
+        height: 250px;
+        margin-bottom: 20px;
+    }
+
+    .slide-text {
+        text-align: center;
+    }
+
+    .reasons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reason {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .review-img {
+        height: 200px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo,
+    .footer-info,
+    .footer-social {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 200px;
+    }
+
+    .slide-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .slide-text p {
+        font-size: 1rem;
+    }
+
+    .review-img {
+        height: 150px;
+    }
+
+    .footer-info p {
+        font-size: 1rem;
+    }
+}
+
+/* ========== Карусель отзывов ========== */
+
+
+.reviews {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+.reviews h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2D2A2A;
+}
+
+.reviews .carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.reviews .carousel-inner {
+    padding: 20px 0;
+}
+
+/* Карточки отзывов */
+.review-item {
+    padding: 0 12px;
+}
+
+.review-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.review-img:hover {
+    transform: scale(1.02);
+}
+
+/* Настройки сетки */
+.reviews .carousel-item.active .row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* Размеры для разных устройств */
+@media (min-width: 992px) {
+    .review-item {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+        padding: 0 15px;
+    }
+
+    .review-img {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .review-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 10px;
+    }
+
+    .review-img {
+        min-height: 300px;
+    }
+}
+
+/* Мобильная версия (до 767px) */
+/* Мобильная версия (до 767px) */
+@media (max-width: 767px) {
+    .reviews .carousel-item.active .row {
+        display: block;
+    }
+
+    .review-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 5px !important;
+        margin-bottom: 20px;
+    }
+
+    .review-img {
+        height: 250px; /* Фиксированная высота */
+        width: 55%; /* Ширина подстраивается */
+        max-width: 100%; /* Не шире родителя */
+        margin: 0 auto;
+        object-fit: contain; /* Показываем все изображение */
+        border-radius: 12px;
+        display: block;
+    }
+
+    .reviews .carousel-control-prev,
+    .reviews .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .reviews .carousel-control-prev {
+        left: 5px;
+    }
+
+    .reviews .carousel-control-next {
+        right: 5px;
+    }
+
+    .review-item:not(:first-child) {
+        display: none;
+    }
+}
+
+/* Стрелки карусели */
+.reviews .carousel-control-prev,
+.reviews .carousel-control-next {
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 50%;
+    opacity: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.reviews .carousel-control-prev {
+    left: -25px;
+}
+
+.reviews .carousel-control-next {
+    right: -25px;
+}
+
+.reviews .carousel-control-prev-icon,
+.reviews .carousel-control-next-icon {
+    width: 25px;
+    height: 25px;
+    background-size: 100%;
+    background-image: none;
+    position: relative;
+}
+
+.reviews .carousel-control-prev-icon:before,
+.reviews .carousel-control-next-icon:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: solid #333;
+    border-width: 0 3px 3px 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(135deg);
+}
+
+.reviews .carousel-control-next-icon:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Индикаторы */
+.reviews .carousel-indicators {
+    bottom: -30px;
+}
+
+.reviews .carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.reviews .carousel-indicators button.active {
+    background-color: #FF69B4;
+}
+
+/* Стили для контейнера кнопок фильтрации */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Уменьшаем промежуток для мобильных */
+    margin: 25px 0;
+    padding: 0 10px;
+    overflow-x: auto;
+    /* Добавляем горизонтальную прокрутку если не помещаются */
+    -webkit-overflow-scrolling: touch;
+    /* Плавная прокрутка на iOS */
+    white-space: nowrap;
+    /* Запрещаем перенос текста */
+}
+
+/* Общий стиль для кнопок */
+.filter-btn {
+    position: relative;
+    padding: 10px 15px;
+    /* Уменьшаем padding для мобильных */
+    border: 2px solid #FF69B4;
+    border-radius: 50px;
+    background-color: white;
+    color: #FF69B4;
+    font-size: 14px;
+    /* Уменьшаем размер шрифта */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 80px;
+    /* Уменьшаем минимальную ширину */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Lora', serif;
+    flex-shrink: 0;
+    /* Запрещаем уменьшение кнопок */
+}
+
+/* Убираем горизонтальную прокрутку на больших экранах */
+@media (min-width: 576px) {
+    .filter-buttons {
+        overflow-x: visible;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .filter-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        min-width: 100px;
+    }
+}
+
+/* Стили для активной кнопки и hover-эффекта */
+.filter-btn.active,
+.filter-btn:hover {
+    color: white;
+    border-color: #FF1493;
+}
+
+.filter-btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF69B4, #FF1493);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.filter-btn:hover:after,
+.filter-btn.active:after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Индивидуальные цвета для категорий */
+.filter-btn[data-filter="all"] .filter-btn[data-filter="букет"] .filter-btn[data-filter="бокс"] .filter-btn[data-filter="корзина"] {
+    border-color: #9c27b0;
+    color: #9c27b0;
+}
+
+.filter-btn[data-filter="all"]:after .filter-btn[data-filter="букет"]:after .filter-btn[data-filter="корзина"]:after .filter-btn[data-filter="бокс"]:after {
+    background: linear-gradient(45deg, #9c27b0, #e91e63);
+}
+
+/* Эффект нажатия */
+.filter-btn:active {
+    transform: translateY(2px);
+}
