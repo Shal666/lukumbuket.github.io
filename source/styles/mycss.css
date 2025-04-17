@@ -1,0 +1,739 @@
+body {
+    background-color: #FFF8E7;
+    color: #6B4226;
+    font-family: 'Arial', sans-serif;
+}
+
+/* ========== ГЛАВНЫЕ СТИЛИ НАВИГАЦИИ ========== */
+.navbar {
+    background-color: #6B4226;
+    padding: 12px 5%;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navbar-brand img {
+    width: 70px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-link {
+    color: #FFF8E7;
+    font-size: 16px;
+    padding: 8px 12px;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Анимация подчеркивания */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #D4A373;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #D4A373;
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Активная страница */
+.nav-link.active {
+    color: #D4A373;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ ========== */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px 5%;
+    }
+
+    .navbar-brand img {
+        width: 40px;
+    }
+
+    /* Скрываем все пункты меню, кроме "О нас" и "Каталог" */
+    .nav-item:not(:first-child):not(:nth-child(2)) {
+        display: none;
+    }
+
+    .nav-link {
+        font-size: 15px;
+        padding: 6px 10px;
+    }
+
+    .nav-link::after {
+        bottom: 4px;
+        height: 1.5px;
+    }
+}
+
+/* Карточки товаров */
+.product-card .card {
+    border: 1px solid #D4A373;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.product-card .card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card[data-category="букет"] .card-img-top {
+    height: 350px;
+}
+
+.product-card[data-category="бокс"] .card-img-top {
+    height: 350px;
+}
+
+.product-card[data-category="корзина"] .card-img-top {
+    height: 350px;
+}
+
+.product-card .card-img-top {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    border-radius: 8px 8px 0 0;
+}
+
+.product-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #6B4226;
+}
+
+.product-card .card-price {
+    font-weight: bold;
+    color: #A52A2A;
+    margin: 10px 0;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: #D4A373;
+    border: none;
+    color: #FFF8E7;
+}
+
+.btn-primary:hover {
+    background-color: #A52A2A;
+}
+
+.btn-outline-primary {
+    color: #D4A373;
+    border-color: #D4A373;
+}
+
+.btn-outline-primary:hover {
+    background-color: #D4A373;
+    border-color: #D4A373;
+    color: #FFF8E7;
+}
+
+/* Фильтры и сортировка */
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.sort-buttons {
+    margin: 20px 0;
+}
+
+/* Футер */
+footer {
+    background-color: #6B4226;
+    color: #FFF8E7;
+    padding: 30px 0;
+}
+
+.footer-logo img {
+    height: 80px;
+}
+
+.footer-social img {
+    height: 80px;
+    width: 80px;
+    margin: 0 10px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #D4A373;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-social {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 8px;
+    }
+}
+
+/* Стили для всех карточек */
+.product-card .card {
+    width: 100%;
+    border: 1px solid #D4A373;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.product-card .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.product-card .card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Кнопка "Заказать" */
+.product-card .btn-primary {
+    margin-top: auto;
+}
+
+/* Стили для контейнера кнопок сортировки */
+.sort-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+/* Общий стиль для кнопок сортировки */
+.sort-asc,
+.sort-desc {
+    position: relative;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 220px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для кнопки "По возрастанию" */
+.sort-asc {
+    background: linear-gradient(45deg, #556B2F, #A52A2A);
+    color: white;
+}
+
+/* Стиль для кнопки "По убыванию" */
+.sort-desc {
+    background: linear-gradient(45deg, #A52A2A, #6B4226);
+    color: white;
+}
+
+/* Эффект при наведении */
+.sort-asc:hover,
+.sort-desc:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект при нажатии */
+.sort-asc:active,
+.sort-desc:active {
+    transform: translateY(1px);
+}
+
+/* Основные стили */
+body {
+    font-family: 'Lora', serif;
+    background-color: #FFF8E7;
+    color: #6B4226;
+    overflow-x: hidden;
+}
+
+/* Карусель */
+.carousel {
+    margin: 30px 0;
+}
+
+.carousel-item img {
+    border-radius: 15px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.slide-text {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.slide-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #6B4226;
+    margin-bottom: 20px;
+}
+
+.slide-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Почему выбирают нас */
+.why-choose-us {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #6B4226;
+}
+
+.reasons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.reason {
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #D4A373;
+}
+
+.reason:hover {
+    transform: translateY(-10px);
+}
+
+.reason img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.reason h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #6B4226;
+}
+
+/* FAQ */
+.faq-section {
+    padding: 50px 0;
+}
+
+.faq-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #6B4226;
+}
+
+.accordion-button {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #6B4226;
+}
+
+.accordion-body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Футер */
+footer {
+    background-color: #6B4226;
+    color: #FFF8E7;
+    padding: 50px 0 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+}
+
+.footer-info {
+    text-align: center;
+}
+
+.footer-info p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.footer-info a {
+    color: #D4A373;
+    text-decoration: none;
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+}
+
+.footer-social a img {
+    width: 80px;
+    height: 80px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social .whatsapp-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.footer-social a img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #D4A373;
+    font-size: 0.9rem;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 992px) {
+    .carousel-item img {
+        height: 350px;
+    }
+
+    .slide-text {
+        padding: 15px;
+    }
+
+    .slide-text h3 {
+        font-size: 1.8rem;
+    }
+
+    .reason {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 50px;
+    }
+
+    .carousel-item .row {
+        flex-direction: column;
+    }
+
+    .carousel-item img {
+        height: 250px;
+        margin-bottom: 20px;
+    }
+
+    .slide-text {
+        text-align: center;
+    }
+
+    .reasons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reason {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .review-img {
+        height: 200px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo,
+    .footer-info,
+    .footer-social {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 200px;
+    }
+
+    .slide-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .slide-text p {
+        font-size: 1rem;
+    }
+
+    .review-img {
+        height: 150px;
+    }
+
+    .footer-info p {
+        font-size: 1rem;
+    }
+}
+
+.reviews {
+    padding: 60px 0;
+    background-color: #FFF8E7;
+    position: relative;
+}
+
+.reviews h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #6B4226;
+}
+
+.reviews .carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.reviews .carousel-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+    gap: 24px;
+}
+
+/* Карточки отзывов */
+.review-item {
+    flex: 0 1 calc(33.333% - 16px);
+    /* три карточки в ряд с учетом отступов */
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.review-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* квадратные изображения */
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #D4A373;
+}
+
+.review-img:hover {
+    transform: scale(1.02);
+}
+
+/* Мобильные устройства: 1 в ряд */
+@media (max-width: 767px) {
+    .review-item {
+        flex: 0 1 100%;
+    }
+}
+
+.review-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #D4A373;
+}
+
+.review-img:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 576px) {
+    .carousel-item.d-lg-none {
+        display: flex !important;        /* делаем контейнер флексом */
+        justify-content: center;         /* центрируем по горизонтали */
+        align-items: center;             /* центрируем по вертикали */
+        height: 55vh !important;         /* Задаём высоту для item */
+    }
+
+    .review-img {
+        height: 55vh !important;         /* высота изображения */
+        width: auto !important;          /* ширина авто */
+        max-width: 100%;                 /* не вылезает за пределы */
+        object-fit: cover;
+    }
+}
+
+
+
+
+
+/* Стили для контейнера кнопок фильтрации */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+    padding: 0 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+
+/* Общий стиль для кнопок */
+.filter-btn {
+    position: relative;
+    padding: 10px 15px;
+    border: 2px solid #D4A373;
+    border-radius: 50px;
+    background-color: white;
+    color: #6B4226;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Lora', serif;
+    flex-shrink: 0;
+}
+
+@media (min-width: 576px) {
+    .filter-buttons {
+        overflow-x: visible;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .filter-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        min-width: 100px;
+    }
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    color: white;
+    border-color: #A52A2A;
+}
+
+.filter-btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #D4A373, #A52A2A);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.filter-btn:hover:after,
+.filter-btn.active:after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.filter-btn:active {
+    transform: translateY(2px);
+}
